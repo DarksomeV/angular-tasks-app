@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,16 +8,14 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)])
+    email: new FormControl(null, { validators: [Validators.required, Validators.email], updateOn: 'blur' }),
+    password: new FormControl('', {validators: [Validators.required, Validators.minLength(6)], updateOn: 'blur'})
   });
-
   constructor() { }
 
   ngOnInit() {
   }
 
-  onSubmit() {
-    console.log(this.loginForm);
-  }
+  // get input() { return this.loginForm.get('email'); }
+
 }

@@ -7,8 +7,9 @@
      <input mdbInput mdbValidate formControlName="email" type="email"
             class="form-control" id="form9">
      <label for="form9">Type your e-mail</label>
-     <mdb-error *ngIf="loginForm.get('email').invalid && (loginForm.get('email').dirty || loginForm.get('email').touched)">Input invalid</mdb-error>
-     <mdb-success *ngIf="loginForm.get('email').valid && (loginForm.get('email').dirty || loginForm.get('email').touched)">Input valid</mdb-success>
+     <mdb-error *ngIf="loginForm.get('email').hasError('email') && !loginForm.get('email').hasError('required') && (loginForm.get('email').dirty || loginForm.get('email').touched)">Please set valid Email. {{loginForm.get('email').value}} is not email.</mdb-error>
+     <mdb-error *ngIf="loginForm.get('email').hasError('required') && (loginForm.get('email').dirty || loginForm.get('email').touched)">Email required</mdb-error>
+     <mdb-success *ngIf="loginForm.get('email').valid && (loginForm.get('email').dirty || loginForm.get('email').touched)">Email is good</mdb-success>
    </div>
 
    <div class="md-form">
@@ -16,9 +17,9 @@
      <input mdbInput mdbValidate formControlName="password" type="password"
             class="form-control" id="form10">
      <label for="form10">Type your password</label>
-     <mdb-error *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched)">Input invalid
+     <mdb-error *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched)">Password invalid
      </mdb-error>
-     <mdb-success *ngIf="loginForm.get('password').valid && (loginForm.get('password').dirty || loginForm.get('password').touched)">Input valid
+     <mdb-success *ngIf="loginForm.get('password').valid && (loginForm.get('password').dirty || loginForm.get('password').touched)">Password is good
      </mdb-success>
    </div>
    <div class="form-group">

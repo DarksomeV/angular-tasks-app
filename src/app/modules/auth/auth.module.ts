@@ -5,7 +5,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { AuthMainComponent } from './pages/auth-main/auth-main.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MDBBootstrapModule} from 'angular-bootstrap-md';
+import {ButtonsModule, InputsModule, InputUtilitiesModule, WavesModule} from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,10 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md';
     FormsModule,
     ReactiveFormsModule,
     AuthRoutingModule,
-    MDBBootstrapModule.forRoot()
+    InputsModule,
+    InputUtilitiesModule,
+    WavesModule,
+    ButtonsModule
   ]
 })
 export class AuthModule { }

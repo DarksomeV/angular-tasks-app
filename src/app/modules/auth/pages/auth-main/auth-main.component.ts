@@ -13,7 +13,9 @@ export class AuthMainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.router.navigate(['/auth/login']);
+    if (this.router.url === '/auth') {
+      this.router.navigate(['/auth/login']);
+    }
   }
 
 }

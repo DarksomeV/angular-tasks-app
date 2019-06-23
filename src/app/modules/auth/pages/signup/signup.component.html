@@ -1,3 +1,58 @@
-<p>
-  signup works!
-</p>
+<form
+  [formGroup]="signupForm"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="md-form">
+    <i class="fa fa-user prefix"></i>
+    <input mdbInput mdbValidate formControlName="name" type="text"
+           class="form-control" id="form8">
+    <label for="form8">Type your name</label>
+    <mdb-error *ngIf="nameInput.hasError('minlength') && !nameInput.hasError('required') && (nameInput.dirty ||nameInput.touched)">Name is too short</mdb-error>
+    <mdb-error *ngIf="nameInput.hasError('required') && (nameInput.dirty ||nameInput.touched)">Name required</mdb-error>
+    <mdb-success *ngIf="nameInput.valid && (nameInput.dirty ||nameInput.touched)">Name is good</mdb-success>
+  </div>
+  <div class="md-form">
+  <i class="fa fa-envelope prefix"></i>
+  <input mdbInput mdbValidate formControlName="email" type="email"
+         class="form-control" id="form9">
+  <label for="form9">Type your e-mail</label>
+  <mdb-error *ngIf="emailInput.hasError('email') && !emailInput.hasError('required') && (emailInput.dirty || emailInput.touched)">Please set valid Email. {{emailInput.value}} is not email.</mdb-error>
+  <mdb-error *ngIf="emailInput.hasError('required') && (emailInput.dirty || emailInput.touched)">Email required</mdb-error>
+  <mdb-success *ngIf="emailInput.valid && (emailInput.dirty || emailInput.touched)">Email is good</mdb-success>
+</div>
+
+  <div class="md-form">
+    <i class="fa prefix" [ngClass]="{'fa-unlock': repeatInput.valid, 'fa-lock': !repeatInput.valid}"></i>
+    <input mdbInput mdbValidate formControlName="password" type="password"
+           class="form-control" id="form11">
+    <label for="form11">Type your password</label>
+    <mdb-error *ngIf="passwordInput.hasError('minlength') && !passwordInput.hasError('required') && (passwordInput.dirty ||passwordInput.touched)">Password is too short</mdb-error>
+    <mdb-error *ngIf="passwordInput.hasError('required') && (passwordInput.dirty ||passwordInput.touched)">Password required</mdb-error>
+    <mdb-success *ngIf="passwordInput.valid && (passwordInput.dirty || passwordInput.touched)">Password is good. Now repeat please.</mdb-success>
+  </div>
+
+  <div class="md-form">
+    <i class="fa prefix"  [ngClass]="{'fa-unlock': repeatInput.valid, 'fa-lock': !repeatInput.valid}"></i>
+    <input mdbInput mdbValidate formControlName="repeatPassword" type="password"
+           class="form-control" id="form12">
+    <label for="form12">Repeat your password</label>
+    <mdb-error *ngIf="repeatInput.hasError('notEqual') && !repeatInput.hasError('required')">Passwords are not equal</mdb-error>
+    <mdb-success *ngIf="repeatInput.valid && (repeatInput.dirty || repeatInput.touched)">Passwords are good</mdb-success>
+  </div>
+
+  <div class="form-group">
+    <mdb-checkbox formControlName="agree">I agree with statements</mdb-checkbox>
+  </div>
+
+  <div class="form-group d-flex justify-content-between">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="signupForm.invalid"
+      >Регистрация</button>
+    </div>
+    <button type="button" [routerLink]="['/auth', 'login']" mdbBtn color="link">Login</button>
+  </div>
+
+</form>

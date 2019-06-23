@@ -13,7 +13,7 @@ import {AuthMainComponent} from './pages/auth-main/auth-main.component';
 const routes: Routes = [
       {path: '', component: AuthMainComponent, children: [
         {path: 'login', component: LoginComponent},
-        {path: 'registration', component: SignupComponent}
+        {path: 'signup', component: SignupComponent}
     ]}
 ];
 

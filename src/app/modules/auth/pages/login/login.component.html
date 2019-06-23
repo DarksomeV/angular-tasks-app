@@ -22,7 +22,7 @@
      <mdb-success *ngIf="loginForm.get('password').valid && (loginForm.get('password').dirty || loginForm.get('password').touched)">Password is good
      </mdb-success>
    </div>
-   <div class="form-group">
+   <div class="form-group d-flex justify-content-between">
      <div class="col-sm-offset-2 col-sm-10">
        <button
          type="submit"
@@ -30,5 +30,6 @@
          [disabled]="loginForm.invalid"
        >Войти</button>
      </div>
+     <button type="button" [routerLink]="['/auth', 'signup']" mdbBtn color="link">Signup</button>
    </div>
  </form>
